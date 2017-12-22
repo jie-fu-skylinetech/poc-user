@@ -6,8 +6,3 @@ handlers:
 - url: /.*
   script: user.app
 
-libraries:
-- name: flask
-  version: 0.12
-- name: google-cloud-storage
-  version: 1.6.0
