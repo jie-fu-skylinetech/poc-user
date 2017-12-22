@@ -1,8 +1,9 @@
-runtime: python27
-api_version: 1
-threadsafe: true
+runtime: python
+env: flex
+entrypoint: gunicorn -b :$PORT user:app
 
-handlers:
-- url: /.*
-  script: user.app
+runtime_config:
+  python_version: 3
 
+env_variables:
+  CLOUD_STORAGE_BUCKET: skyline-user.appspot.com
