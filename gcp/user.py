@@ -13,10 +13,12 @@ app = Flask(__name__)
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 # [END create_app]
 
+gcp_bucket = "skyline-user.appspot.com"
+
 def saveImage(imageId, imageData):
-    client = storage.Client()
-    bucket = client.get_bucket('user-images')
-    blob = bucket.blob("./images/{}.jpg".format(imageId))
+	client = storage.Client()
+	bucket = client.get_bucket(gcp_bucket)
+	blob = bucket.blob("./selfie_{}.jpg".format(imageId))
     blob.upload_from_string(imageData, 'image/jpeg')
 #    os.mkdir('images')
 #    with open("./images/{}.jpg".format(imageId), 'w+b') as selfie:
