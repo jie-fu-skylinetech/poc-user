@@ -34,13 +34,15 @@ def isWellKnownUser():
         imageId = uuid.uuid4()
     if (imageData != ''):
         saveImage(imageId, imageData)
+    return "{'isWellKnownUser':1,'username':'jdoe','status':1,'imageId':imageId}"
+    '''
     response = app.response_class(
         response="{'isWellKnownUser':1,'username':'jdoe','status':1,'imageId':imageId}",
         status=200,
         mimetype='application/json'
     )
     return response
-
+    '''
 @app.route('/registerUnknownUser', methods=['GET','POST'] )
 def registerUnknownUser():
     imageId = request.form['imageId']
@@ -50,13 +52,15 @@ def registerUnknownUser():
         imageId = uuid.uuid4()
     if (imageData != ''):
         saveImage(imageId, imageData)
+    return "{'isWellKnownUser':1,'username':'jdoe','status':1,'imageId':imageId}"
+    '''
     response = app.response_class(
         response="{'isWellKnownUser':1,'username':'jdoe','status':1,'imageId':imageId}",
         status=200,
         mimetype='application/json'
     )
     return response
-
+    '''
 @app.errorhandler(500)
 def server_error(e):
     # Log the error and stacktrace.
