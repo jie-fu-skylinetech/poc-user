@@ -1,0 +1,12 @@
+{
+ "type": "service_account",
+ "project_id": "skyline-user",
+ "private_key_id": "2f053417d2440ffca9d015b39567cc3c87ef5507",
+ "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDL8jrHHTiYq/Az\nCfkNrIpBz+9RsLFgRO+k3wklikOrFJJgMcrE3sOYJNdu1XJHuzE7LrguYf4wvQi0\n6JFJtBXpexxT8Kx/lXex29IyLs4NLPaIiQSSiYupvZbo+yRhYFmxUTJuJHteZeXM\ne5xaenx03VGqvLDCakBgwcFMuC521TXA+vKg0Pi9XY0ZF8XlhnNtT8ReBMk0/UVX\nVfKIfUYVaBVpfgQoGPE0U3WRJPRsLy7Z6ldjLKL9D+cicyOP5qfHACuK/gECOATX\nTDfrGt/Wp7+jUeNdnXnL3qBUNpQSyty4WGsSWqeGaV2W4VyvaZcvvT6rv0leOBYZ\n635VgNnTAgMBAAECggEAOUWYw/msvxLprSuLyQ8+9CRUbHhWF1bEhWQsyWH+hriM\nMn9JFegIvVz7MqC2KvaiaKBCEKRsIXu0SjlVM4Fi9eIgnmHjzyBGMKguavFB4+lQ\ngh8YLZ56nfwjuOFt4fqQtX67zrpn+qZa1gWQbsge0yKjoHLEoJP96C4A/m5qfev5\nGtOhi3v+C39CETxvEBj+Wbc150iv4bOsWDpcaehQ1phwDsqSxs7sgTI5GZkJkekN\nSZgZATUrluEB0jYDdnmaS5lTwhDe2rt2lGfFqxwbXrMI1PSVHrjagBmB+tbQH7PF\ng9i5vsktlvSg8Xhhqo2xYMvN2kuS6gWHz0Ryc5P84QKBgQD4LYQDeIdem8R86WDD\nUWNJRnunc4zt5trGpTbGjBYFq+2xUUeUL7KQiwiZRZg29HOA8nMK3QKnMqVDMIgx\nopOR2Ih2SauHtlj2t6Yjv4kXBc2mAdWJfAvJcli5Y7U13Coh4rUHH2TvCd3iPHlL\n0T5TOY2agD0fk+yFoq+6sCkV1QKBgQDSX9IDCH7iTbPN6YSYk7EDRveBXf8hGawe\nt9CnnU3lrZ6TZj00I1SVEpTGNWASnJYFqtrNiQbrUg8MDvbUJx6peOfGrc/DMSG/\n1wF3cpjfMyJwUXSk1oZgfjCTsnSkD/WeoVxtW+l5gATyD1Rhnc1m0DkecAmEy5GW\n9uyCRLe9BwKBgQDKNKOMBGcfQYENWUUavrRLnp7fZ3la2K5GDZScnsTOqC+JOrU8\nWsR9mppN73M+y1tUo7XyEvK3cb9PCDrfXhwoR6mf3xRgBcVkd2tpUwSKepL9AB+Q\n3j3oSz9ZBZE+qfy2ETX38K9XR82+KBGYIYtLWegzCutCUE707wGI9UD0ZQKBgGuV\nWwX4E0NR71CvSgLpDI4bfblnw3A++7md0RPWqx544m6Iy2XdZ4Twwqp2Y1JBR6tQ\nS6Lun146Ub2d7XZjJxgN36HIA0bT2mmL35EhRrJmKQd9cIRXvNKd1ePCUEoSa06b\nQHQgm85pvJ25XzKoi4E3nO5G52dE34hvcFXSJJCDAoGAEMPBYZLFMugrkXI1Jzxn\nRZDC5syy0JRWIVci2zwZ4FAlQh1oWrdK29LB/oLFFxsUYK9McFO8JAhU+9hmI0eJ\nl9Zcmf1XjWtHXWf4b1T+uO8lih4DhBoTDFDZICpHAf6R03a3EEhnEO4dt9FafFik\nG0UfnztWOUcnPhRxHw0kHkw=\n-----END PRIVATE KEY-----\n",
+ "client_email": "skyline-user@appspot.gserviceaccount.com",
+ "client_id": "106842686987430815223",
+ "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+ "token_uri": "https://accounts.google.com/o/oauth2/token",
+ "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+ "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/skyline-user%40appspot.gserviceaccount.com"
+}
