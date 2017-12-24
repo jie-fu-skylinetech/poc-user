@@ -61,6 +61,11 @@ def registerUnknownUser():
     )
     return response
     '''
+
+@app.route('/', methods=['GET','POST'] )
+def info():
+    return "Ok"
+
 @app.errorhandler(500)
 def server_error(e):
     # Log the error and stacktrace.
