@@ -15,8 +15,9 @@ class App extends React.Component {
   }
 
   login() {
-    this.setState({ filepath: "./client/public/images/Tulips.jpg" }, () =>
-      this.capture().then(filepath => {
+    //isWellKnownUser
+    this.capture().then(filepath => {
+      this.setState({ 'filepath': filepath }, () => {
         axios
           .post("/api/isWellKnownUser", {
             filepath: this.state.filepath,
@@ -24,13 +25,13 @@ class App extends React.Component {
           })
           .then(res => console.log(res.data))
           .catch(err => console.log(err.data));
-      })
-    );
+      });
+    });
   }
 
   register() {
-    this.setState({ filepath: "./client/public/images/Tulips.jpg" }, () =>
-      this.capture().then(filepath => {
+    this.capture().then(filepath => {
+      this.setState({ 'filepath': filepath }, () => {
         axios
           .post("/api/registerUnknownUser", {
             filepath: this.state.filepath,
@@ -38,14 +39,14 @@ class App extends React.Component {
           })
           .then(res => console.log(res.data))
           .catch(err => console.log(err.data));
-      })
-    );
+      });
+    });
   }
 
   capture() {
     return new Promise((resolve, reject) => {
       //Capture picture with phone and get the file path of the image
-      let filepath = "./client/public/images/Tulips.jpg";
+      let filepath = "./client/public/images/Google.jpg";
       resolve(filepath);
     });
   }
