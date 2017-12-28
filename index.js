@@ -5,6 +5,7 @@ const fs = require("fs");
 const axios = require("axios");
 const FormData = require("form-data");
 const https = require("https");
+const concat = require("concat-stream")
 
 var user_service_base_url = 
 //production url
@@ -53,6 +54,50 @@ function authorize_gcp() {
   });
 }
 
+function callUserApi(res, user_service_url, access_token, filepath, username){
+  const form = new FormData();
+  form.append("token", access_token);
+  form.append("imageData", fs.readFileSync(filepath));
+  if (username){
+    form.append("username", username)
+  }
+  form.append("random", Math.random());
+  axios
+  .post(user_service_url, form, {
+    headers: {'Content-Type': 'multipart/form-data' }
+  })
+  .then(result => {
+    console.log('success')
+    //console.log(result);
+    res.send(result.data);
+  })
+  .catch(error => {
+    console.log('error')
+    console.log(error)
+    res.status(500).send(error);
+  });
+
+  /*
+  form.pipe(concat({encoding: 'buffer'}, data => {
+    console.log(user_service_url);
+    axios
+      .post(user_service_url, data, {
+        headers: {'Content-Type': 'multipart/form-data' }
+      })
+      .then(result => {
+        console.log('success')
+        //console.log(result);
+        res.send(result.data);
+      })
+      .catch(error => {
+        console.log('error')
+        console.log(error)
+        res.status(500).send(error);
+      });
+    }))
+    */
+}
+
 const app = express();
 
 app.use(bodyParser.json());
@@ -72,21 +117,8 @@ app.post("/api/isWellKnownUser", (req, res) => {
   authorize_gcp()
     .then(tokens => {
       console.log("Successfully acquired token!");
-      const form = new FormData();
-      form.append("selfie", fs.readFileSync(req.body.filepath));
-      form.append("random", Math.random());
-      form.append("token", tokens.access_token);
       user_service_url = user_service_base_url + "isWellKnownUser";
-      console.log(user_service_url);
-      axios
-        .post(user_service_url, form)
-        .then(result => {
-          //console.log(result);
-          res.json(result.data);
-        })
-        .catch(error => {
-          res.status(500).send(error);
-        });
+      callUserApi(res, user_service_url, tokens.access_token, req.body.filepath)
     })
     .catch(err => {
       handle_gcp_error(err);
