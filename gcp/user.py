@@ -2,6 +2,7 @@ import logging
 import uuid
 import base64
 import os
+import sys
 from google.cloud import storage
 
 # [START imports]
@@ -16,10 +17,13 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 gcp_bucket = "skyline-user.appspot.com"
 
 def saveImage(imageId, imageData):
+#    return ''
+
     client = storage.Client()
     bucket = client.get_bucket(gcp_bucket)
     blob = bucket.blob("./selfie_{}.jpg".format(imageId))
     blob.upload_from_string(imageData, 'image/jpeg')
+
 #    os.mkdir('images')
 #    with open("./images/{}.jpg".format(imageId), 'w+b') as selfie:
 #        selfie.write(base64.decodebytes(imageData.split(',')[1].encode()))
@@ -27,14 +31,20 @@ def saveImage(imageId, imageData):
 
 @app.route('/isWellKnownUser', methods=['GET','POST'] )
 def isWellKnownUser():
-    imageId = request.form['imageId']
-    imageData = request.form['imageData']
-    #Save image
-    if (imageId == ''):
-        imageId = uuid.uuid4()
-    if (imageData != ''):
-        saveImage(imageId, imageData)
-    return "{'isWellKnownUser':1,'username':'jdoe','status':1,'imageId':imageId}"
+#    return "{'isWellKnownUser':1,'username':'jdoe','status':1}",
+#    return 'success'
+    try:
+        imageId = request.form['imageId']
+        imageData = request.form['imageData']
+        #Save image
+        if (imageId == ''):
+            imageId = uuid.uuid4()
+        if (imageData != ''):
+            saveImage(imageId, imageData)
+    except:
+        print ('Error saving file to cloud')
+        print (sys.exc_info())
+    return "{'isWellKnownUser':1,'username':'jdoe','status':1}"
     '''
     response = app.response_class(
         response="{'isWellKnownUser':1,'username':'jdoe','status':1,'imageId':imageId}",
@@ -45,13 +55,18 @@ def isWellKnownUser():
     '''
 @app.route('/registerUnknownUser', methods=['GET','POST'] )
 def registerUnknownUser():
-    imageId = request.form['imageId']
-    imageData = request.form['imageData']
-    #Save image
-    if (imageId == ''):
-        imageId = uuid.uuid4()
-    if (imageData != ''):
-        saveImage(imageId, imageData)
+    try:
+        imageId = request.form['imageId']
+        imageData = request.form['imageData']
+        #Save image
+    
+        if (imageId == ''):
+            imageId = uuid.uuid4()
+        if (imageData != ''):
+            saveImage(imageId, imageData)
+    except:
+        print('Error saving file to cloud')
+        print (sys.exc_info())
     return "{'isWellKnownUser':1,'username':'jdoe','status':1,'imageId':imageId}"
     '''
     response = app.response_class(
@@ -64,7 +79,12 @@ def registerUnknownUser():
 
 @app.route('/', methods=['GET','POST'] )
 def info():
-    return "Ok"
+    response = app.response_class(
+        response="{'isWellKnownUser':1,'username':'jdoe','status':1}",
+        status=200,
+        mimetype='application/json'
+    )
+    return response
 
 @app.errorhandler(500)
 def server_error(e):
